@@ -49,6 +49,7 @@ Thumbs.db
 
 # Virtual environments #
 ########################
+.venv/
 venv/
 venv3/
 
@@ -57,3 +58,7 @@ venv3/
 .coverage
 coverage/
 report/
+
+# IDE's temp files #
+####################
+.vscode/
