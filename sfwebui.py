@@ -1065,3 +1065,13 @@ class SpiderFootWebUi:
         return json.dumps(retdata, ensure_ascii=False)
 
     scanelementtypediscovery.exposed = True
+
+
+    def vacuum(self):
+        dbh = SpiderFootDb(self.config)
+        if dbh.vacuumDB():
+            return json.dumps(["SUCCESS", ""])
+        else:
+            return json.dumps(["FAILED", ""])
+
+    vacuum.exposed = True

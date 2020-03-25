@@ -885,3 +885,12 @@ class SpiderFootDb:
                 nextIds.append(row[8])
 
         return datamap
+    
+    # Remove unused space from SQLite DB
+    def vacuumDB(self):
+        try:
+            self.dbh.execute("VACUUM")
+            self.conn.commit()
+            return True
+        except sqlite3.Error as e:
+            self.sf.fatal("SQL error encountered when vacuuming the db (" + str(self.dbh) + ": " + e.args[0])
